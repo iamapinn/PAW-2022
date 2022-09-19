@@ -1,0 +1,77 @@
+SQL Query membuat tabel prodi
+==> CREATE TABLE tbl_prodi (
+id_prodi INT,
+nama_prodi VARCHAR(255),
+ket_prodi VARCHAR(255),
+PRIMARY KEY (id_prodi)
+)
+
+SQL Query membuat tabel mahasiswa
+==> CREATE TABLE tbl_mhs (
+id_mhs INT,
+id_prodi INT,
+nama_mhs VARCHAR(255),
+alamat_mhs VARCHAR(255),
+PRIMARY KEY (id_prodi),
+FOREIGN KEY (id_prodi) REFERENCES tbl_prodi(id_prodi)
+)
+
+SQL Query insert data tbl_prodi
+==> INSERT INTO tbl_prodi VALUES
+(1, "Teknik Informatika", "Aktif"),
+(2, "Sistem Informasi", "Aktif")
+
+SQL Query insert data tbl_mhs
+==> INSERT INTO tbl_mhs VALUES
+(1, 1, "Apin", "Jl. Kebon Jeruk"),
+(2, 1, "Opin", "Jl. Kebon Jeruk"),
+(3, 2, "Bagas", "Jl. Kebon Jeruk"),
+(4, 2, "Bagus", "Jl. Kebon Jeruk")
+
+SQL Query select data column tbl_mhs
+==> SELECT nama_mhs, alamat_mhs FROM tbl_mhs
+
+SQL Query select data column tbl_mhs dengan kondisi alamat_mhs dan di urutkan berdasarkan nama_mhs secara Descending
+==> SELECT nama_mhs, alamat_mhs
+FROM tbl_mhs
+WHERE alamat_mhs = "Gresik"
+ORDER BY nama_mhs DESC
+
+SQL Query select data dengan limit 3
+==> SELECT nama_mhs, alamat_mhs
+FROM tbl_mhs
+LIMIT 3
+
+SQL Query select data dengan limit dari data ke sampai ke
+==> SELECT nama_mhs, alamat_mhs
+FROM tbl_mhs
+LIMIT 3,5
+
+SQL Query menghitung jumlah tabel prodi
+==> SELECT COUNT(*)
+FROM tbl_prodi
+
+SQL Query menampilkan 2 tabel dengan kondisi yang sama
+==> SELECT *
+FROM tbl_mhs, tbl_prodi
+WHERE tbl_mhs.id_prodi = tbl_prodi.id_prodi
+
+SQL Query menampilkan 2 tabel dengan column yang dicari
+==> SELECT nama_mhs, alamat_mhs, nama_prodi
+FROM tbl_mhs, tbl_prodi
+WHERE tbl_mhs.id_prodi = tbl_prodi.id_prodi
+
+SQL Query inisialisasi nama tabel
+==> SELECT nama_mhs, alamat_mhs, nama_prodi
+FROM tbl_mhs m, tbl_prodi p
+WHERE m.id_prodi = p.id_prodi
+
+MySQLi Procedural connection database
+==> $conn = mysqli_connect("localhost", "root", "", "db_mahasiswa");
+
+MySQLi OOP connection database
+==> $conn = new mysqli("localhost", "root", "", "db_mahasiswa");
+
+MySQLi PDO connection database
+==> $conn = new PDO("mysql:host=localhost;dbname=db_mahasiswa", "root", "");
+ 
