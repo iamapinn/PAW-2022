@@ -12,4 +12,4 @@ sunny,normal,TRUE,yes,mild
 overcast,high,TRUE,yes,mild
 overcast,normal,FALSE,yes,hot
 rainy,high,TRUE,no,mild
-overcast,normal,TRUE,yes
+overcast,normal,TRUE,yes,
